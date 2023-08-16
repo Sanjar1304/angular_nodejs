@@ -3,7 +3,6 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 
-
 const app = express();
 
 app.use(cors());
@@ -23,6 +22,25 @@ const db = mysql.createConnection({
 db.connect((err) => {
     return !err ? console.log('database connected') : console.log(err);
 })
+
+// get all data
+app.get('/user', (req, res) => {
+
+    let query = `select * from user`;
+    db.query(query, (err, result) => {
+        if (err) console.log(err, 'error')
+
+        if (result.length > 0) {
+            res.send({
+                message: 'all user data',
+                data: result
+            })
+        }
+    })
+
+})
+
+
 
 
 
