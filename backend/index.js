@@ -7,3 +7,5 @@ const app = express();
 
 app.use(cors());
 app.use(bodyparser.json());
+
+app.listen(3000)
