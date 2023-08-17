@@ -42,6 +42,30 @@ app.get('/user', (req, res) => {
 
 
 
+// get single data
+app.get('/user/:id', (req, res) => {
+    let getID = req.params.id;
+    let query = `select * from user where id = ${getID}`;
+
+    db.query(query, (err, result) => {
+        if (err) console.log(err, 'error')
+        if (result.length > 0) {
+            res.send({
+                message: 'required user data',
+                data: result
+            })
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
 
 
 app.listen(3000, () => {
