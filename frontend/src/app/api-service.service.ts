@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +15,15 @@ export class ApiServiceService {
 
 
   // get all  data
-  getALLData(){
+  getALLData(): Observable<any>{
     return this.http.get(`${this.apiURL}user`);
   }
 
 
 
   // get data by ID
-  getDataByID(id: number){
-    return this.http.get(`${this.apiURL}/user/${id}`);
+  getDataByID(id: number): Observable<any>{
+    return this.http.get(`${this.apiURL}user/${id}`);
   }
 
 
