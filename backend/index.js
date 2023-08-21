@@ -100,8 +100,17 @@ app.put('/user/:id', (req, res) => {
 
 
 
-
-
+// delete data
+app.delete('/user/:id', (req, res) => {
+    let id = req.params.id;
+    let query = `delete from user where id = ${id}`;
+    db.query(query, (err, result) => {
+        if (err) console.log(err);
+        res.send({
+            message: 'data deleted'
+        })
+    })
+})
 
 
 
