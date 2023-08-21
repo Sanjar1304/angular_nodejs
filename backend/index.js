@@ -18,10 +18,13 @@ const db = mysql.createConnection({
     port: 3306
 })
 
+
 // check database connection
 db.connect((err) => {
     return !err ? console.log('database connected') : console.log(err);
 })
+
+
 
 // get all data
 app.get('/user', (req, res) => {
@@ -65,7 +68,7 @@ app.get('/user/:id', (req, res) => {
 
 
 
-// post data
+// add data
 app.post('/user', (req, res) => {
     let fullname = req.body.fullname;
     let email = req.body.email;
