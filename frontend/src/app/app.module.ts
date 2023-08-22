@@ -10,7 +10,7 @@ import { ReadComponent } from './read/read.component';
   declarations: [
     AppComponent,
     CreateComponent,
-    ReadComponent
+    ReadComponent,
   ],
   imports: [
     BrowserModule,

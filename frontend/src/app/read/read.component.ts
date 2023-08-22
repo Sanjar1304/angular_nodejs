@@ -10,7 +10,7 @@ import { ApiServiceService } from '../api-service.service';
 export class ReadComponent implements OnInit {
 
 
-  allReadData!: any[];
+  allReadData:any;
   getByIdData: any;
 
 
@@ -27,8 +27,7 @@ export class ReadComponent implements OnInit {
   // get all data
   getAllData(){
     this.apiService.getALLData().subscribe((response) => {
-      this.allReadData = response;
-      console.log(this.allReadData)
+      this.allReadData = response.data
     })
   }
 

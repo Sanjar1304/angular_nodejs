@@ -16,7 +16,7 @@ export class ApiServiceService {
 
   // get all  data
   getALLData(): Observable<any>{
-    return this.http.get(`${this.apiURL}user`);
+    return this.http.get(`${this.apiURL}user`)
   }
 
 
