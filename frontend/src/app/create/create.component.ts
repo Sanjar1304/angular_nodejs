@@ -1,3 +1,4 @@
+import { ApiServiceService } from '../api-service.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
+
+
+  constructor(private apiService: ApiServiceService){}
+
+
+  createData(data: any){
+    this.apiService.createData(data).subscribe((response) => {
+      
+    })
+  }
+
 
 }
