@@ -28,4 +28,11 @@ export class ApiServiceService {
 
 
 
+  // create data
+  createData(data: any): Observable<any>{
+    return this.http.post(`${this.apiURL}user`, data)
+  }
+
+
+
 }
