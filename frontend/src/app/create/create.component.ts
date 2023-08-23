@@ -37,18 +37,12 @@ export class CreateComponent {
 
 
   userSubmit(){
-
     if(this.createForm.valid){
-      console.log(this.createForm.value)
+      console.log(this.createForm.value);
+      this.apiService.createData(this.createForm.value).subscribe((response) => {});
     }else{
       this.errorMessage = 'all the fields are required';
     }
-
-    this.apiService.createData(this.createForm.value).subscribe((response) => {
-
-    })
-
-
   }
 
 
