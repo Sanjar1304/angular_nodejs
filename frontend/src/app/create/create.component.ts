@@ -1,3 +1,5 @@
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { ApiServiceService } from '../api-service.service';
 import { Component } from '@angular/core';
 
@@ -9,13 +11,44 @@ import { Component } from '@angular/core';
 export class CreateComponent {
 
 
-  constructor(private apiService: ApiServiceService){}
+  createForm!: FormGroup;
+  errorMessage: any;
 
 
-  createData(data: any){
-    this.apiService.createData(data).subscribe((response) => {
-      
+  constructor(private apiService: ApiServiceService,
+              private fb: FormBuilder){}
+
+
+
+  ngOnInit(){
+    this.userCreateFormValidation();
+  }
+
+
+
+  userCreateFormValidation(){
+    this.createForm = this.fb.group({
+      fullname: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [Validators.required])
     })
+  }
+
+
+
+  userSubmit(){
+
+    if(this.createForm.valid){
+      console.log(this.createForm.value)
+    }else{
+      this.errorMessage = 'all the fields are required';
+    }
+
+    this.apiService.createData(this.createForm.value).subscribe((response) => {
+
+    })
+
+
   }
 
 
