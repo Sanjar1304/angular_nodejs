@@ -13,6 +13,7 @@ export class CreateComponent {
 
   createForm!: FormGroup;
   errorMessage: any;
+  successMessage: any;
 
 
   constructor(private apiService: ApiServiceService,
@@ -39,7 +40,10 @@ export class CreateComponent {
   userSubmit(){
     if(this.createForm.valid){
       console.log(this.createForm.value);
-      this.apiService.createData(this.createForm.value).subscribe((response) => {});
+      this.apiService.createData(this.createForm.value).subscribe((response) => {
+        this.createForm.reset();
+        this.successMessage = response.message
+      });
     }else{
       this.errorMessage = 'all the fields are required';
     }
