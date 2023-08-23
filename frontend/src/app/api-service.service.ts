@@ -35,4 +35,11 @@ export class ApiServiceService {
 
 
 
+  // delete data
+  deleteData(id:any): Observable<any>{
+    return this.http.delete(`${this.apiURL}user/${id}`)
+  }
+
+
+  
 }

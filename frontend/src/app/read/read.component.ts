@@ -12,7 +12,7 @@ export class ReadComponent implements OnInit {
 
   allReadData:any;
   getByIdData: any;
-
+  successMessage: any;
 
 
   constructor(private apiService: ApiServiceService){}
@@ -43,4 +43,15 @@ export class ReadComponent implements OnInit {
 
 
 
+  // delete data by ID
+  deleteById(id:any){
+    this.apiService.deleteData(id).subscribe((response) => {
+      this.getAllData();
+      this.successMessage = response.message
+    })
+  }
+
+
+
+  
 }
