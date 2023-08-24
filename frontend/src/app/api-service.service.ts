@@ -35,11 +35,20 @@ export class ApiServiceService {
 
 
 
+  // update data
+  updateData(id: any, data: any) : Observable<any>{
+    return this.http.put(`${this.apiURL}user/${id}`, data);
+  }
+
+
+
   // delete data
   deleteData(id:any): Observable<any>{
     return this.http.delete(`${this.apiURL}user/${id}`)
   }
 
 
-  
+
+
+
 }

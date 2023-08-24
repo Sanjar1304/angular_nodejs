@@ -53,5 +53,14 @@ export class ReadComponent implements OnInit {
 
 
 
-  
+
+  // update data by ID
+  updateDataByID(id: number, data:any){
+    this.apiService.updateData(id, data).subscribe((res) => {
+      
+    })
+  }
+
+
+
 }
