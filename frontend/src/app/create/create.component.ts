@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ApiServiceService } from '../api-service.service';
@@ -14,15 +15,20 @@ export class CreateComponent {
   createForm!: FormGroup;
   errorMessage: any;
   successMessage: any;
+  getparamID: any;
 
 
   constructor(private apiService: ApiServiceService,
-              private fb: FormBuilder){}
+              private fb: FormBuilder,
+              private activeRoute: ActivatedRoute,
+              private router: Router){}
 
 
 
   ngOnInit(){
     this.userCreateFormValidation();
+    this.getparamID = this.activeRoute.snapshot.paramMap.get('id');
+    this.patchValue()
   }
 
 
@@ -39,7 +45,6 @@ export class CreateComponent {
 
   userSubmit(){
     if(this.createForm.valid){
-      console.log(this.createForm.value);
       this.apiService.createData(this.createForm.value).subscribe((response) => {
         this.createForm.reset();
         this.successMessage = response.message
@@ -48,6 +53,31 @@ export class CreateComponent {
       this.errorMessage = 'all the fields are required';
     }
   }
+
+
+  patchValue(){
+    this.apiService.getDataByID(this.getparamID).subscribe((response) => {
+      this.createForm.patchValue({
+        fullname: response.data[0].fullname,
+        email: response.data[0].email,
+        mobile: response.data[0].mobile
+      })
+    })
+  }
+
+
+  userUpdate(){
+    if(this.createForm.valid){
+      this.apiService.updateData(this.getparamID, this.createForm.value).subscribe((res) => {
+        this.createForm.reset();
+        this.successMessage = res.message;
+        this.router.navigate(['/read']);
+      })
+    }else{
+      this.errorMessage = 'all the fields are required';
+    }
+  }
+
 
 
 }

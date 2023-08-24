@@ -32,32 +32,11 @@ export class ReadComponent implements OnInit {
   }
 
 
-  // get data by ID
-  getById(id: number){
-    this.apiService.getDataByID(id).subscribe((response) => {
-      console.log(response)
-      this.getByIdData = response;
-    })
-  }
-
-
-
-
   // delete data by ID
   deleteById(id:any){
     this.apiService.deleteData(id).subscribe((response) => {
       this.getAllData();
       this.successMessage = response.message
-    })
-  }
-
-
-
-
-  // update data by ID
-  updateDataByID(id: number, data:any){
-    this.apiService.updateData(id, data).subscribe((res) => {
-      
     })
   }
 

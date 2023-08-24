@@ -6,7 +6,8 @@ import { ReadComponent } from './read/read.component';
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent},
-  {path: 'read', component: ReadComponent}
+  {path: 'create/:id', component: CreateComponent},
+  {path: 'read', component: ReadComponent},
 ];
 
 @NgModule({

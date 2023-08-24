@@ -22,7 +22,7 @@
                 <td>{{item.email}}</td>
                 <td>{{item.mobile}}</td>
                 <td>
-                    <button type="button" class="btn btn-success">Edit</button>
+                    <a [routerLink]="['/create', item.id]" class="btn btn-success">Edit</a>
                     <button type="button" class="btn btn-danger mx-2" (click)="deleteById(item.id)">Delete</button>
                 </td>
             </tr>
